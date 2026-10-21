@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './VisitanosContent.module.css';
+import { publicAsset } from '../../../lib/sitePaths.mjs';
 
 /**
  * VisitanosContent — Vista Visítanos Fiel 1:1 a Figma MAM TRUX
@@ -76,7 +77,7 @@ export default function VisitanosContent() {
             {/* Logo Museo CaféBar (#4271:823) */}
             <div className={styles.cafeBarWrapper}>
               <img
-                src="/assets/v2/museo_cafe_bar.png"
+                src={publicAsset('/assets/v2/museo_cafe_bar.png')}
                 alt="Museo CaféBar"
                 className={styles.cafeBarLogo}
               />

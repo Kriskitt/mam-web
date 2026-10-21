@@ -6,6 +6,7 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import TicketModal from '../../components/TicketModal';
 import './CronogramaPage.css';
+import { publicAsset } from '../../lib/sitePaths.mjs';
 
 export default function CronogramaClientPage({ initialEvents = [], initialDays = [] }) {
   const [selectedDayId, setSelectedDayId] = useState(
@@ -118,7 +119,7 @@ export default function CronogramaClientPage({ initialEvents = [], initialDays =
                   <Link href={`/cronograma/${event.slug}`} className="cronograma-page-thumbnail-link">
                     <figure className="cronograma-page-thumbnail-figure">
                       <img 
-                        src={event.image} 
+                        src={publicAsset(event.image)}
                         alt={event.title}
                         className="cronograma-page-thumbnail-img"
                       />

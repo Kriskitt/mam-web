@@ -6,6 +6,7 @@ import Header from '../../../components/Header';
 import Footer from '../../../components/Footer';
 import TicketModal from '../../../components/TicketModal';
 import './CronogramaPost.css';
+import { publicAsset } from '../../../lib/sitePaths.mjs';
 
 export default function CronogramaPostClient({ event, relatedEvents }) {
   const [isTicketModalOpen, setIsTicketModalOpen] = useState(false);
@@ -43,7 +44,7 @@ export default function CronogramaPostClient({ event, relatedEvents }) {
 
           <figure className="cronograma-post-hero-figure">
             <img 
-              src={event.image} 
+              src={publicAsset(event.image)}
               alt={event.title}
               className="cronograma-post-hero-img"
             />
@@ -107,7 +108,7 @@ export default function CronogramaPostClient({ event, relatedEvents }) {
                 <Link href={`/cronograma/${item.slug}`} className="cronograma-post-related-link">
                   <figure className="cronograma-post-related-figure">
                     <img 
-                      src={item.image} 
+                      src={publicAsset(item.image)}
                       alt={item.title}
                       className="cronograma-post-related-img"
                     />

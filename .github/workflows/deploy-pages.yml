@@ -1,0 +1,55 @@
+name: MAM client preview on GitHub Pages
+
+on:
+  push:
+    branches:
+      - deploy/github-pages
+  workflow_dispatch:
+
+concurrency:
+  group: mam-pages-preview
+  cancel-in-progress: true
+
+jobs:
+  build:
+    if: github.ref == 'refs/heads/deploy/github-pages'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Check out preview branch
+        uses: actions/checkout@v4
+        with:
+          ref: deploy/github-pages
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Install dependencies
+        run: npm ci
+      - name: Check asset paths
+        run: node --test tests/sitePaths.test.mjs
+      - name: Build static site
+        run: npm run build
+      - name: Upload static site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./out
+
+  deploy:
+    if: github.ref == 'refs/heads/deploy/github-pages'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy preview
+        id: deployment
+        uses: actions/deploy-pages@v4

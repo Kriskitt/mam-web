@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import styles from './DockScrubber.module.css';
+import { publicAsset } from '../../../lib/sitePaths.mjs';
 
 /**
  * @param {{ pieces?: Array<{ id?: string, title?: string, image?: string, thumbnail?: string }>, selectedIndex?: number, onSelect?: (index: number) => void, onWheel?: (event: WheelEvent) => void }} props
@@ -82,7 +83,7 @@ export default function DockScrubber({ pieces = [], selectedIndex = 0, onSelect 
               onKeyDown={(event) => handleKeyDown(event, index)}
             >
               <img
-                src={imageSrc}
+                src={publicAsset(imageSrc)}
                 alt=""
                 className={styles.thumbImg}
                 draggable="false"

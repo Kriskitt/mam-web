@@ -2,7 +2,7 @@
 
 import React, { useState, useRef } from 'react';
 import styles from './EditorialSplitLayout.module.css';
-import { savePreproductionSubmission } from '../../../lib/preproductionForms';
+import { publicAsset } from '../../../lib/sitePaths.mjs';
 
 /**
  * EditorialSplitLayout — Layout Editorial Dividido 50/50 con Scroll Independiente
@@ -69,7 +69,6 @@ export default function EditorialSplitLayout({
 }) {
   const [activeMediaIndex, setActiveMediaIndex] = useState(0);
   const [formData, setFormData] = useState({ email: '', institucion: '' });
-  const [formStatus, setFormStatus] = useState('idle'); // 'idle' | 'submitting' | 'success'
   const [feedbackMessage, setFeedbackMessage] = useState('');
   const scrollerRef = useRef(null);
   const mediaItemRefs = useRef([]);
@@ -78,16 +77,7 @@ export default function EditorialSplitLayout({
     e.preventDefault();
     if (!e.currentTarget.reportValidity()) return;
 
-    setFormStatus('submitting');
-    try {
-      savePreproductionSubmission('mam-educacion-preview', formData);
-      setFormStatus('success');
-      setFeedbackMessage('Datos guardados solo en este navegador (preproducción). Tu mensaje aún no se ha enviado al museo.');
-      setFormData({ email: '', institucion: '' });
-    } catch {
-      setFormStatus('error');
-      setFeedbackMessage('No se pudo guardar el registro local. Intenta nuevamente.');
-    }
+    setFeedbackMessage('Vista previa: tu mensaje no se ha enviado al museo ni se ha guardado.');
   };
 
   const currentMedia = mediaItems[activeMediaIndex] || mediaItems[0] || {
@@ -162,7 +152,7 @@ export default function EditorialSplitLayout({
                   className={styles.mediaItemWrap}
                 >
                   <img
-                    src={item.src}
+                    src={publicAsset(item.src)}
                     alt={item.alt || `Registro educativo ${idx + 1}`}
                     className={styles.mediaImage}
                     loading={idx === 0 ? 'eager' : 'lazy'}
@@ -172,7 +162,7 @@ export default function EditorialSplitLayout({
             ) : (
               <figure className={styles.mediaItemWrap}>
                 <img
-                  src={currentMedia.src}
+                  src={publicAsset(currentMedia.src)}
                   alt={currentMedia.alt || 'Registro educativo'}
                   className={styles.mediaImage}
                   loading="eager"
@@ -370,12 +360,11 @@ export default function EditorialSplitLayout({
                   <button
                     type="submit"
                     className={styles.formSubmitButton}
-                    disabled={formStatus === 'submitting'}
                   >
-                    {formStatus === 'submitting' ? 'Enviando...' : 'Enviar'}
+                    Enviar
                   </button>
 
-                  {(formStatus === 'success' || formStatus === 'error') && (
+                  {feedbackMessage && (
                     <p className={styles.formFeedbackSuccess} role="status">
                       {feedbackMessage}
                     </p>

@@ -5,7 +5,7 @@
 
 @font-face {
   font-family: 'Anko';
-  src: url('/fonts/mam/Anko-Regular.ttf') format('truetype');
+  src: url('/mam-web/fonts/mam/Anko-Regular.ttf') format('truetype');
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -13,7 +13,7 @@
 
 @font-face {
   font-family: 'Anko';
-  src: url('/fonts/mam/Anko-Medium.ttf') format('truetype');
+  src: url('/mam-web/fonts/mam/Anko-Medium.ttf') format('truetype');
   font-style: normal;
   font-weight: 500;
   font-display: swap;
@@ -21,7 +21,7 @@
 
 @font-face {
   font-family: 'Anko';
-  src: url('/fonts/mam/Anko-SemiBold.ttf') format('truetype');
+  src: url('/mam-web/fonts/mam/Anko-SemiBold.ttf') format('truetype');
   font-style: normal;
   font-weight: 600;
   font-display: swap;
@@ -29,7 +29,7 @@
 
 @font-face {
   font-family: 'Anko';
-  src: url('/fonts/mam/Anko-Bold.ttf') format('truetype');
+  src: url('/mam-web/fonts/mam/Anko-Bold.ttf') format('truetype');
   font-style: normal;
   font-weight: 700;
   font-display: swap;
@@ -37,7 +37,7 @@
 
 @font-face {
   font-family: 'Monument Grotesk';
-  src: url('/fonts/mam/MonumentGrotesk-Regular.ttf') format('truetype');
+  src: url('/mam-web/fonts/mam/MonumentGrotesk-Regular.ttf') format('truetype');
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -45,7 +45,7 @@
 
 @font-face {
   font-family: 'Monument Grotesk';
-  src: url('/fonts/mam/MonumentGrotesk-Medium.ttf') format('truetype');
+  src: url('/mam-web/fonts/mam/MonumentGrotesk-Medium.ttf') format('truetype');
   font-style: normal;
   font-weight: 500;
   font-display: swap;
@@ -53,7 +53,7 @@
 
 @font-face {
   font-family: 'Monument Grotesk';
-  src: url('/fonts/mam/MonumentGrotesk-Bold.ttf') format('truetype');
+  src: url('/mam-web/fonts/mam/MonumentGrotesk-Bold.ttf') format('truetype');
   font-style: normal;
   font-weight: 700;
   font-display: swap;

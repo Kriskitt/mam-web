@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import styles from './HeroSlider.module.css';
+import { publicAsset } from '../../../lib/sitePaths.mjs';
 
 export const HOME_HERO_SLIDES = [
   { image: '/assets/angel_slide_img.png', title: 'EXHIBICIONES / ÁNGEL CHÁVEZ', href: '/salas/angel-chavez', alt: 'Sala Ángel Chávez' },
@@ -46,14 +47,14 @@ export default function HeroSlider() {
         {HOME_HERO_SLIDES.map((slide, index) => (
           <img
             key={slide.image}
-            src={slide.image}
+            src={publicAsset(slide.image)}
             alt={slide.alt}
             className={`${styles.bgImage} ${index === currentIndex ? styles.activeImage : ''}`}
             aria-hidden={index !== currentIndex}
             data-slide-index={index}
             onError={(event) => {
               event.currentTarget.onerror = null;
-              event.currentTarget.src = '/assets/v2/home_hero_slide.png';
+              event.currentTarget.src = publicAsset('/assets/v2/home_hero_slide.png');
             }}
           />
         ))}

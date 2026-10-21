@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import styles from './ExhibicionesSection.module.css';
+import { publicAsset } from '../../../lib/sitePaths.mjs';
 
 /**
  * Las 6 Salas Curatoriaes Reales de Figma (#4022:155, 1920x1457px)
@@ -95,7 +96,7 @@ export default function ExhibicionesSection() {
             >
               <div className={styles.imageWrapper}>
                 <img
-                  src={card.image}
+                  src={publicAsset(card.image)}
                   alt={`${card.salaTitle} — ${card.workTitle}`}
                   className={styles.cardImage}
                   loading="eager"

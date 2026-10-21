@@ -4,6 +4,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import HeaderV2 from '../HeaderV2';
 import DockScrubber from './DockScrubber';
 import styles from './PrecolombinoViewer.module.css';
+import { publicAsset } from '../../../lib/sitePaths.mjs';
 
 const TEMPORARY_PRECOLOMBINO_IMAGES = [
   '/assets/precolombino-gallery/precolombino_1.png',
@@ -77,7 +78,7 @@ export default function PrecolombinoViewer({ pieces = FIGMA_PRECOLOMBINO_PIECES 
     [-1, 0, 1].forEach((offset) => {
       const index = (selectedIndex + offset + totalPieces) % totalPieces;
       const image = new window.Image();
-      image.src = galleryPieces[index].image || galleryPieces[index].thumbnail;
+      image.src = publicAsset(galleryPieces[index].image || galleryPieces[index].thumbnail);
     });
   }, [galleryPieces, selectedIndex, totalPieces]);
 
@@ -221,7 +222,7 @@ export default function PrecolombinoViewer({ pieces = FIGMA_PRECOLOMBINO_PIECES 
           return (
             <img
               key={piece.id || index}
-              src={imageSrc}
+              src={publicAsset(imageSrc)}
               alt={isActive ? piece.alt || piece.title || `Pieza precolombina ${index + 1}` : ''}
               className={`${styles.mainArtworkImg} ${isActive ? styles.mainArtworkImgActive : styles.mainArtworkImgHidden}`}
               draggable="false"

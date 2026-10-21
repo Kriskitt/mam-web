@@ -6,6 +6,7 @@ import AmigosBadge from '../AmigosBadge';
 import HorizontalGallery from './HorizontalGallery';
 import NewsletterSection from '../home/NewsletterSection';
 import styles from './SalaSingleView.module.css';
+import { publicAsset } from '../../../lib/sitePaths.mjs';
 import { ROOMS_V2_DATA } from '../../../data/v2/roomsV2Data';
 
 /**
@@ -35,7 +36,7 @@ export default function SalaSingleView({ sala = ROOMS_V2_DATA.monumental }) {
         {/* 2. Portada Monumental Hero Limpia (Lienzo de la obra a pantalla completa) */}
         <section className={styles.coverHero} aria-label={`Portada de ${currentSala.name}`}>
           <img
-            src={currentSala.coverImage}
+            src={publicAsset(currentSala.coverImage)}
             alt={currentSala.name}
             className={styles.coverImage}
             loading="eager"
@@ -58,7 +59,7 @@ export default function SalaSingleView({ sala = ROOMS_V2_DATA.monumental }) {
 
               <div className={styles.silhouetteWrapper}>
                 <img
-                  src="/assets/v2/dancer_silhouette.png"
+                  src={publicAsset('/assets/v2/dancer_silhouette.png')}
                   alt="Silueta escultórica de Gerardo Chávez"
                   className={styles.dancerSilhouette}
                 />

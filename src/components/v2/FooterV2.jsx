@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { publicAsset } from '../../lib/sitePaths.mjs';
 import styles from './FooterV2.module.css';
 
 /**
@@ -62,7 +63,7 @@ export default function FooterV2({ homeVariant = false }) {
           </Link>
           <div className={styles.socialWrapper}>
             <img
-              src="/assets/social-icons.svg"
+              src={publicAsset('/assets/social-icons.svg')}
               alt="Redes Sociales MAM"
               className={styles.socialIconsImg}
             />
@@ -80,7 +81,7 @@ export default function FooterV2({ homeVariant = false }) {
         <div className={styles.fundacionCol}>
           <div className={styles.fundacionLogoWrapper}>
             <img
-              src="/assets/fundacion-logo.svg"
+              src={publicAsset('/assets/fundacion-logo.svg')}
               alt="Fundación Gerardo Chávez"
               className={styles.fundacionLogoImg}
             />

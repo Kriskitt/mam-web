@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { publicAsset } from '../lib/sitePaths.mjs';
 import './Footer.css';
 
 export default function Footer({ isDark = false, variant = 'default' }) {
@@ -13,13 +14,13 @@ export default function Footer({ isDark = false, variant = 'default' }) {
         <div className="footer-col-brand">
           <Link href="/" aria-label="MAM Trujillo">
             <img 
-              src="/assets/mam-logo.svg" 
+              src={publicAsset('/assets/mam-logo.svg')}
               alt="MAM - Museo de Arte Moderno Trujillo" 
               className="footer-logo-svg"
             />
           </Link>
           <img 
-            src="/assets/social-icons.svg" 
+            src={publicAsset('/assets/social-icons.svg')}
             alt="Redes Sociales MAM" 
             className="footer-social-svg"
           />
@@ -53,7 +54,7 @@ export default function Footer({ isDark = false, variant = 'default' }) {
             EL MUSEO DE ARTE MODERNO TRUJILLO ES UN PROYECTO DE:
           </p>
           <img 
-            src="/assets/fundacion-logo.svg" 
+            src={publicAsset('/assets/fundacion-logo.svg')}
             alt="Fundación Gerardo Chávez" 
             className="fundacion-logo-svg"
           />

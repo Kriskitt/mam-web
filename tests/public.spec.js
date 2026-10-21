@@ -1,9 +1,10 @@
 import { expect, test } from '@playwright/test';
+import { basePath } from '../src/lib/sitePaths.mjs';
 
 const routes = [
-  '/', '/exhibiciones', '/salas/monumental', '/salas/coleccion',
+  '/', '/exhibiciones', '/salas', '/salas/monumental', '/salas/coleccion',
   '/salas/angel-chavez', '/salas/temporal', '/salas/proyectos', '/salas/centro',
-  '/precolombino', '/educacion', '/nosotros', '/visitanos',
+  '/precolombino', '/salas/precolombino', '/educacion', '/nosotros', '/visitanos',
   '/cronograma', '/cronograma/manifesto-para-la-ciudad',
   '/cronograma/visitas-guiadas-mediaciones',
   '/cronograma/inauguracion-dioses-bravos',
@@ -18,9 +19,9 @@ for (const width of [390, 1024, 1440, 1920, 2560]) {
     page.on('pageerror', (error) => pageErrors.push(error.message));
 
     for (const route of routes) {
-      const response = await page.goto(route, { waitUntil: 'domcontentloaded' });
+      const response = await page.goto(`${basePath}${route}`, { waitUntil: 'domcontentloaded' });
       expect(response?.status(), route).toBe(200);
-      await expect(page.locator(route === '/precolombino' ? '[role="region"]' : 'main').first(), route).toBeVisible();
+      await expect(page.locator(route.endsWith('precolombino') ? '[role="region"]' : 'main').first(), route).toBeVisible();
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1), route).toBe(true);
       expect(await page.evaluate(() => [...document.images].filter((image) => image.complete && !image.naturalWidth).map((image) => image.src)), route).toEqual([]);
     }
@@ -29,14 +30,14 @@ for (const width of [390, 1024, 1440, 1920, 2560]) {
   });
 }
 
-test('legacy Salas Precolombino URL redirects to the public gallery', async ({ page }) => {
-  await page.goto('/salas/precolombino');
-  await expect(page).toHaveURL(/\/precolombino$/);
+test('legacy Salas Precolombino URL shows the public gallery', async ({ page }) => {
+  await page.goto(`${basePath}/salas/precolombino/`);
+  await expect(page.getByRole('region', { name: /Pabellón de Colección Precolombina/ })).toBeVisible();
 });
 
 for (const route of ['/salas/coleccion', '/nosotros']) {
   test(`carousel loops twice in both directions on ${route}`, async ({ page }) => {
-    await page.goto(route);
+    await page.goto(`${basePath}${route}`);
     const gallery = page.locator('[data-active-index]');
     await expect(gallery.locator('[data-gallery-source="true"]')).toHaveCount(6);
     await expect(gallery).toHaveAttribute('data-active-index', '0');
@@ -59,7 +60,7 @@ for (const route of ['/salas/coleccion', '/nosotros']) {
 }
 
 test('Precolombino keeps 22 positions synchronized across controls', async ({ page }) => {
-  await page.goto('/precolombino');
+  await page.goto(`${basePath}/precolombino`);
   const thumbnails = page.getByRole('tab', { name: /Pieza arqueológica/ });
   await expect(thumbnails).toHaveCount(22);
   await expect(thumbnails.nth(0)).toHaveAttribute('aria-selected', 'true');
@@ -87,16 +88,16 @@ test('Precolombino keeps 22 positions synchronized across controls', async ({ pa
   expect(await page.evaluate(() => window.scrollY)).toBe(scrollY);
 });
 
-test('newsletter is explicitly browser-only in preproduction', async ({ page }) => {
-  await page.goto('/');
+test('newsletter does not submit data in the static preview', async ({ page }) => {
+  await page.goto(`${basePath}/`);
   await page.getByLabel('Correo electrónico').fill('preview@example.test');
   await page.getByRole('button', { name: 'Suscribirse' }).click();
-  await expect(page.getByRole('status')).toContainText('solo en este navegador');
-  expect(await page.evaluate(() => JSON.parse(localStorage.getItem('mam-newsletter-preview') || '[]').length)).toBe(1);
+  await expect(page.getByRole('status')).toContainText('no se ha enviado');
+  expect(await page.evaluate(() => localStorage.getItem('mam-newsletter-preview'))).toBeNull();
 });
 
 test('Home hero, Amigos modal, and both map embeds remain interactive', async ({ page }) => {
-  await page.goto('/');
+  await page.goto(`${basePath}/`);
   await page.locator('[data-slide-nav="2"]').click();
   await expect(page.locator('[data-slide-nav="2"]')).toHaveAttribute('aria-current', 'true');
   await expect(page.getByTitle('Mapa de Museo de Arte Moderno de Trujillo, Perú')).toHaveAttribute('src', /google\.com\/maps/);
@@ -107,20 +108,20 @@ test('Home hero, Amigos modal, and both map embeds remain interactive', async ({
   await modal.getByPlaceholder('Nombres y Apellidos').fill('Persona de prueba');
   await modal.getByPlaceholder('Correo electrónico').fill('amigos@example.test');
   await modal.getByRole('button', { name: 'Enviar' }).click();
-  await expect(modal).toContainText('solo en este navegador');
+  await expect(modal).toContainText('no se ha enviado');
 
-  await page.goto('/visitanos');
+  await page.goto(`${basePath}/visitanos`);
   await expect(page.getByTitle('Mapa de Museo de Arte Moderno de Trujillo, Perú')).toHaveAttribute('src', /google\.com\/maps/);
 });
 
 test('Education form and ticket dialog disclose preproduction limitations', async ({ page }) => {
-  await page.goto('/educacion');
+  await page.goto(`${basePath}/educacion`);
   await page.getByLabel('Correo electrónico').fill('educacion@example.test');
   await page.getByLabel('Institución educativa').fill('Escuela de prueba');
   await page.getByRole('button', { name: 'Enviar' }).click();
-  await expect(page.getByRole('status')).toContainText('aún no se ha enviado');
+  await expect(page.getByRole('status')).toContainText('no se ha enviado');
 
-  await page.goto('/cronograma/manifesto-para-la-ciudad');
+  await page.goto(`${basePath}/cronograma/manifesto-para-la-ciudad`);
   await page.getByRole('button', { name: 'RESERVAR CUPO' }).click();
   await expect(page.getByText('Reserva de Entradas')).toBeVisible();
   await page.getByRole('button', { name: 'VER RESUMEN' }).click();

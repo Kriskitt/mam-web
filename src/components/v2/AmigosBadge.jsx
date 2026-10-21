@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './AmigosBadge.module.css';
 import AmigosMAMModal from './modals/AmigosMAMModal';
+import { publicAsset } from '../../lib/sitePaths.mjs';
 
 /**
  * AmigosBadge — Botón flotante distintivo de Amigos del MAM
@@ -145,7 +146,7 @@ export default function AmigosBadge({ onClick, isOpen: controlledIsOpen, onOpenC
           aria-label="Abrir inscripción al programa Amigos del MAM"
         >
           <img
-            src="/assets/v2/amigos_mam_figura.png"
+            src={publicAsset('/assets/v2/amigos_mam_figura.png')}
             alt="AMIGOS MAM"
             className={styles.badgeImage}
           />

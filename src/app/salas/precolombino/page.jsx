@@ -1,5 +1,2 @@
-import { redirect } from 'next/navigation';
-
-export default function SalaPrecolombinoRedirect() {
-  redirect('/precolombino');
-}
+// A static host cannot issue the server redirect used by the main branch.
+export { default, metadata } from '../../precolombino/page';

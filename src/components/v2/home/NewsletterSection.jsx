@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import styles from './NewsletterSection.module.css';
-import { savePreproductionSubmission } from '../../../lib/preproductionForms';
+import { publicAsset } from '../../../lib/sitePaths.mjs';
 
 /**
  * NewsletterSection — Boletín Cultural Fiel 1:1 a Figma MAM TRUX (#4022:116)
@@ -18,25 +18,13 @@ import { savePreproductionSubmission } from '../../../lib/preproductionForms';
 export default function NewsletterSection() {
   const [email, setEmail] = useState('');
   const [honeypot, setHoneypot] = useState('');
-  const [status, setStatus] = useState('idle'); // 'idle' | 'loading' | 'success' | 'error'
   const [feedback, setFeedback] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!email || !e.currentTarget.reportValidity() || honeypot) return;
 
-    setStatus('loading');
-    setFeedback('');
-
-    try {
-      savePreproductionSubmission('mam-newsletter-preview', { email: email.trim() });
-      setStatus('success');
-      setFeedback('Registro guardado solo en este navegador (preproducción). Aún no estás suscrito al boletín.');
-      setEmail('');
-    } catch {
-      setStatus('error');
-      setFeedback('No se pudo guardar el registro local. Intenta nuevamente.');
-    }
+    setFeedback('Vista previa: tu solicitud no se ha enviado al museo. El boletín aún no está disponible.');
   };
 
   return (
@@ -55,7 +43,7 @@ export default function NewsletterSection() {
               aria-label="NEWSLETTER — Gerardo Chávez"
               data-fill-to-stroke="true"
             >
-              <use href="/assets/home/newsletter.svg#Layer_1" />
+              <use href={publicAsset('/assets/home/newsletter.svg#Layer_1')} />
             </svg>
             <span className={styles.sculptureLabel}>NEWSLETTER</span>
           </figure>
@@ -93,21 +81,19 @@ export default function NewsletterSection() {
                 placeholder="Correo electrónico"
                 required
                 className={styles.input}
-                disabled={status === 'loading'}
               />
             </div>
 
             <button
               type="submit"
               className={styles.submitBtn}
-              disabled={status === 'loading'}
             >
-              {status === 'loading' ? 'Enviando...' : 'Suscribirse'}
+              Suscribirse
             </button>
 
             {feedback && (
               <div
-                className={`${styles.feedback} ${status === 'success' ? styles.feedbackSuccess : styles.feedbackError}`}
+                className={`${styles.feedback} ${styles.feedbackSuccess}`}
                 role="status"
               >
                 {feedback}

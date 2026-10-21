@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import styles from './AmigosMAMModal.module.css';
-import { savePreproductionSubmission } from '../../../lib/preproductionForms';
+import { publicAsset } from '../../../lib/sitePaths.mjs';
 
 /**
  * AmigosMAMModal — Diálogo Modal del Programa Amigos MAM
@@ -15,8 +15,7 @@ import { savePreproductionSubmission } from '../../../lib/preproductionForms';
  */
 export default function AmigosMAMModal({ isOpen = false, onClose }) {
   const [formData, setFormData] = useState({ name: '', email: '' });
-  const [submitted, setSubmitted] = useState(false);
-  const [formError, setFormError] = useState('');
+  const [showPreviewNotice, setShowPreviewNotice] = useState(false);
   const cardRef = useRef(null);
 
   // Escuchar tecla Escape, foco inicial y trampa de foco accesible (A11y WAI-ARIA)
@@ -77,12 +76,7 @@ export default function AmigosMAMModal({ isOpen = false, onClose }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!e.currentTarget.reportValidity()) return;
-    try {
-      savePreproductionSubmission('mam-amigos-preview', formData);
-      setSubmitted(true);
-    } catch {
-      setFormError('No se pudo guardar el registro local. Intenta nuevamente.');
-    }
+    setShowPreviewNotice(true);
   };
 
   const handleBackdropClick = (e) => {
@@ -115,7 +109,7 @@ export default function AmigosMAMModal({ isOpen = false, onClose }) {
         {/* Figura de Identidad Oficial Amigos MAM (#4271:1099, 239x140px) */}
         <div className={styles.figureWrapper}>
           <img
-            src="/assets/v2/amigos_mam_figura.png"
+            src={publicAsset('/assets/v2/amigos_mam_figura.png')}
             alt="AMIGOS MAM ✦"
             className={styles.amigosHeroFigure}
           />
@@ -148,16 +142,15 @@ export default function AmigosMAMModal({ isOpen = false, onClose }) {
         </div>
 
         {/* Formulario de Registro (#4271:1130) */}
-        {submitted ? (
+        {showPreviewNotice ? (
           <div className={styles.successMessage} role="status">
-            <strong>¡Gracias por tu interés en Amigos MAM!</strong>
+            <strong>Inscripción no disponible en esta vista previa.</strong>
             <p style={{ margin: '6px 0 0', opacity: 0.9 }}>
-              Datos guardados solo en este navegador (preproducción). Para unirte, escríbenos por WhatsApp.
+              Tu solicitud no se ha enviado ni guardado. Para unirte, escríbenos por WhatsApp.
             </p>
           </div>
         ) : (
           <form className={styles.form} onSubmit={handleSubmit}>
-            {formError && <p role="alert">{formError}</p>}
             <input
               type="text"
               name="name"

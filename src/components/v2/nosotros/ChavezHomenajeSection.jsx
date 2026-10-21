@@ -1,6 +1,7 @@
 import React from 'react';
 import HorizontalGallery from '../salas/HorizontalGallery';
 import styles from './ChavezHomenajeSection.module.css';
+import { publicAsset } from '../../../lib/sitePaths.mjs';
 
 const NOSOTROS_GALLERY_PHOTOS = [
   {
@@ -56,7 +57,7 @@ export default function ChavezHomenajeSection() {
           {/* Logo Fundación Centrado (#4271:839) */}
           <div className={styles.fundacionLogoWrapper}>
             <img
-              src="/assets/fundacion-logo-dark.svg"
+              src={publicAsset('/assets/fundacion-logo-dark.svg')}
               alt="Fundación Gerardo Chávez"
               className={styles.fundacionLogoImg}
             />

@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { publicAsset } from '../lib/sitePaths.mjs';
 import './Header.css';
 
 export default function Header({ isDark = false, activePage = '', variant = 'default' }) {
@@ -13,7 +14,7 @@ export default function Header({ isDark = false, activePage = '', variant = 'def
         <div className="figma-header-logo-block">
           <Link href="/" aria-label="MAM Trujillo">
             <img 
-              src="/assets/mam-logo.svg" 
+              src={publicAsset('/assets/mam-logo.svg')}
               alt="MAM - Museo de Arte Moderno Trujillo" 
               className="figma-logo-img"
             />

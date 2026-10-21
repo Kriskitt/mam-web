@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import styles from './CuratorialExhibitionGrid.module.css';
 import { ROOMS_LIST_V2 } from '../../../data/v2/roomsV2Data';
+import { publicAsset } from '../../../lib/sitePaths.mjs';
 
 /**
  * CuratorialExhibitionGrid — Exhibiciones MAM TRUX sobre Lienzo Oscuro (#452B10)
@@ -83,7 +84,7 @@ export default function CuratorialExhibitionGrid({ rooms = ROOMS_LIST_V2 }) {
                   {/* Imagen completa en el lienzo */}
                   <div className={mediaFrameClass}>
                     <img
-                      src={room.coverImage}
+                      src={publicAsset(room.coverImage)}
                       alt={room.name}
                       className={styles.itemImage}
                       loading={index < 2 ? 'eager' : 'lazy'}

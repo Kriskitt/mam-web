@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './HorizontalGallery.module.css';
+import { publicAsset } from '../../../lib/sitePaths.mjs';
 
 const GALLERY_SIZE = 6;
 
@@ -317,7 +318,7 @@ export default function HorizontalGallery({
                 data-gallery-position={isClone ? undefined : sourceIndex}
               >
                 <img
-                  src={item.src}
+                  src={publicAsset(item.src)}
                   alt={isClone ? '' : item.alt || `Registro fotográfico de ${roomName}`}
                   className={styles.galleryImage}
                   loading={!isClone && sourceIndex === 0 ? 'eager' : 'lazy'}

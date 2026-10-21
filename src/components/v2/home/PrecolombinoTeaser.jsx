@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import styles from './PrecolombinoTeaser.module.css';
+import { publicAsset } from '../../../lib/sitePaths.mjs';
 
 const PAVILION_IMAGES = [
   '/assets/home/precolombino_1.png',
@@ -71,7 +72,7 @@ export default function PrecolombinoTeaser() {
               {PAVILION_IMAGES.map((image, index) => (
                 <img
                   key={image}
-                  src={image}
+                  src={publicAsset(image)}
                   alt={PAVILION_ALT_TEXT[index]}
                   aria-hidden={index !== activeImage}
                   className={`${styles.showcaseImage} ${index === activeImage ? styles.activeImage : ''}`}
