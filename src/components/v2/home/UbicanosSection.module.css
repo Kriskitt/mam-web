@@ -1,0 +1,93 @@
+/* ==============================================================================
+   MAM TRUX — UbicanosSection Modular Styles
+   Fiel 1:1 al Nodo de Figma #4077:159 (1920x931px)
+   ============================================================================== */
+
+.section {
+  width: 100%;
+  background-color: var(--mam2-location-bg, #B9DEBF);
+  color: var(--mam2-text-earth, #452B10);
+  padding: 60px 0 0;
+  overflow: hidden;
+}
+
+/* Barra Superior (#4077:156 y #4077:155) */
+.topBar {
+  width: 100%;
+  max-width: none;
+  margin: 0 auto;
+  padding: 0 var(--mam2-gutter, 2%) 40px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+}
+
+.titleBlock,
+.addressBlock {
+  text-align: left;
+}
+
+.sectionTitle {
+  font-family: var(--mam2-font-functional-sans, sans-serif);
+  font-size: 29.2px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--mam2-text-earth, #452B10);
+  margin: 0;
+}
+
+.addressBlock {
+  justify-self: start;
+}
+
+.addressText {
+  font-family: var(--mam2-font-functional-sans, sans-serif);
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 500;
+  color: var(--mam2-text-earth, #452B10);
+  margin: 0;
+}
+
+/* Mapa Satelital Continuo a 1920px (#4084:163, altura ~760px) */
+.mapWrapper {
+  width: 100%;
+  height: 960px;
+  overflow: hidden;
+  position: relative;
+}
+
+.mapFrame {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
+}
+
+/* Responsividad */
+@media (max-width: 1024px) {
+  .topBar {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .mapWrapper {
+    height: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sectionTitle {
+    font-size: 22px;
+  }
+
+  .addressText {
+    font-size: 15px;
+    line-height: 20px;
+  }
+
+  .mapWrapper {
+    height: 380px;
+  }
+}

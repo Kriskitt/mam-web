@@ -1,0 +1,201 @@
+/* ==============================================================================
+   MAM TRUX — ExhibicionesSection Modular Styles
+   Fiel 1:1 al Nodo de Figma #4022:155 (1920x1457px, Grilla 3x2 de 640x667px)
+   ============================================================================== */
+
+.section {
+  width: 100%;
+  color: var(--mam2-text-earth, #452B10);
+  padding: 60px 0 0;
+}
+
+.inner {
+  width: 100%;
+  max-width: none;
+  margin: 0 auto;
+}
+
+/* Fila de Encabezado (#4022:187 y flecha #4223:392) */
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 var(--mam2-gutter, 2%) 30px;
+}
+
+.sectionTitle {
+  font-family: var(--mam2-font-functional-sans, sans-serif);
+  font-size: 29.2px;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--mam2-text-earth, #452B10);
+  margin: 0;
+}
+
+.headerArrowLink {
+  font-size: 32px;
+  line-height: 1;
+  color: var(--mam2-text-earth, #452B10);
+  text-decoration: none;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.headerArrowLink:hover {
+  transform: translate(3px, -3px);
+  opacity: 0.7;
+}
+
+/* Grilla 3x2 (#4022:155, 3 columnas de 640px en 1920px) */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  width: 100%;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 635 / 848;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  background-color: var(--card-gradient, #D6C080);
+  outline: none;
+}
+
+.imageWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--card-gradient, #D6C080);
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: none;
+  display: block;
+}
+
+.roomName,
+.salaHeading {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  padding: 12px 16px;
+  color: var(--mam2-bg-white);
+  font-family: 'Anko', var(--mam2-font-editorial-serif, serif);
+  font-size: clamp(1.35rem, 2.05vw, 2.25rem);
+  font-weight: 400;
+  line-height: 1.1;
+  text-align: center;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+/* El estado hover reemplaza por completo la imagen por el color curatorial. */
+.cardOverlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 20px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--card-gradient, #D6C080);
+  color: var(--mam2-text-earth, #452B10);
+  z-index: 2;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.card:hover .cardOverlay,
+.card:focus-visible .cardOverlay,
+.card:focus-within .cardOverlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+.card:hover .roomName,
+.card:focus-visible .roomName,
+.card:focus-within .roomName {
+  opacity: 0;
+}
+
+.card:hover .salaHeading,
+.card:focus-visible .salaHeading,
+.card:focus-within .salaHeading {
+  color: var(--mam2-text-earth, #452B10);
+}
+
+.card:focus-visible {
+  outline: 3px solid var(--mam2-text-earth, #452B10);
+  outline-offset: -3px;
+}
+
+.salaHeading {
+  align-self: center;
+  margin: auto 0;
+}
+
+.workTitleText {
+  max-width: 90%;
+  font-family: var(--mam2-font-functional-sans, sans-serif);
+  font-size: clamp(0.9rem, 1vw, 0.9rem);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  margin: 0;
+  text-align: center;
+  color: var(--mam2-text-earth, #452B10);
+}
+
+.metaText {
+  margin: 0;
+  font-family: var(--mam2-font-functional-sans, sans-serif);
+  font-size: clamp(0.9rem, 1vw, 0.9rem);
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
+  color: var(--mam2-text-earth, #452B10);
+}
+
+/* ==============================================================================
+   RESPONSIVIDAD MÓVIL
+   ============================================================================== */
+@media (max-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card {
+    aspect-ratio: 635 / 848;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    aspect-ratio: 635 / 848;
+  }
+
+  .sectionTitle {
+    font-size: 22px;
+  }
+}

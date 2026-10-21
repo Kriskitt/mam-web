@@ -1,0 +1,191 @@
+/* ==============================================================================
+   MAM TRUX — FooterV2 Modular Styles
+   Fiel 1:1 al Nodo de Figma #4120:62 (1920x174px, fondo #452B10, texto #F9F6F3)
+   ============================================================================== */
+
+.footer {
+  width: 100%;
+  background-color: var(--mam2-bg-dark, #452B10);
+  color: var(--mam2-text-light, #F9F6F3);
+  font-family: var(--mam2-font-functional-sans, sans-serif);
+  border-top: 1px solid var(--mam2-border-hairline-dark, rgba(249, 246, 243, 0.12));
+  padding: 30px var(--mam2-gutter, 20px);
+  position: relative;
+  z-index: 10;
+}
+
+.homeFooter {
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+.homeFooter .inner {
+  max-width: none;
+}
+
+.inner {
+  width: 100%;
+  max-width: var(--mam2-max-width, 1880px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1.6fr 1.5fr 1fr;
+  align-items: center;
+  gap: 32px;
+}
+
+/* Col 1 & 2: Tipografía de Información (M-Text-14-N) */
+.footerText {
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--mam2-text-light, #F9F6F3);
+  margin: 0;
+  opacity: 0.9;
+}
+
+.footerLink {
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.footerLink:hover {
+  opacity: 0.7;
+  text-decoration: underline;
+}
+
+/* Col 3: Centro de Marca MAM */
+.brandCenterCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+}
+
+.logoLink {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  gap: 10px;
+}
+
+.mamLogoSvg {
+  height: 48px;
+  width: auto;
+  max-width: 200px;
+  display: block;
+}
+
+.brandTitleText {
+  font-size: 12.3px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  opacity: 0.95;
+}
+
+.socialWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+.socialIconsImg {
+  height: 18px;
+  width: auto;
+  display: block;
+}
+
+/* Col 4: Fundación Gerardo Chávez */
+.fundacionCol {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+}
+
+.projectNotice {
+  font-size: 12.5px;
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 1.4;
+  letter-spacing: 0.05em;
+  margin: 0;
+  max-width: 220px;
+  text-align: right;
+  opacity: 0.85;
+}
+
+.fundacionLogoWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.fundacionLogoImg {
+  height: 90px;
+  width: auto;
+  display: block;
+}
+
+/* ==============================================================================
+   RESPONSIVIDAD MÓVIL
+   ============================================================================== */
+@media (max-width: 1200px) {
+  .inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .brandCenterCol {
+    grid-column: 1 / -1;
+    order: -1;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(249, 246, 243, 0.1);
+  }
+
+  .fundacionCol {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 32px 16px;
+  }
+
+  .homeFooter {
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+
+  .inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .brandCenterCol {
+    align-items: flex-start;
+    text-align: left;
+    width: 100%;
+  }
+
+  .fundacionCol {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .projectNotice {
+    text-align: left;
+  }
+
+  .fundacionLogoImg {
+    height: 70px;
+  }
+}

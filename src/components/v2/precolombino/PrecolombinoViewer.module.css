@@ -1,0 +1,110 @@
+.sanctuaryContainer {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 520px;
+  overflow: hidden;
+  background: var(--mam2-bg-dark, #261708);
+  color: var(--mam2-text-light, #F9F6F3);
+  font-family: var(--mam2-font-functional-sans, sans-serif);
+  user-select: none;
+  -webkit-user-select: none;
+  outline: none;
+}
+
+.artworkCanvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  cursor: default;
+  touch-action: none;
+}
+
+.mainArtworkImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0;
+  transition: none;
+  pointer-events: none;
+}
+
+.mainArtworkImgActive {
+  opacity: 1;
+}
+
+.mainArtworkImgHidden {
+  opacity: 0;
+}
+
+.topGradient {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 150px;
+  z-index: 5;
+  background: linear-gradient(180deg, rgba(38, 23, 8, 0.68), rgba(38, 23, 8, 0));
+  pointer-events: none;
+}
+
+.bottomGradient {
+  position: absolute;
+  inset: auto 0 0;
+  height: 220px;
+  z-index: 5;
+  background: linear-gradient(0deg, rgba(38, 23, 8, 0.88), rgba(38, 23, 8, 0));
+  pointer-events: none;
+}
+
+.directionCursor {
+  position: fixed;
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  color: var(--mam2-text-light, #F9F6F3);
+  mix-blend-mode: difference;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.directionCursorDouble svg {
+  width: 30px;
+  height: 18px;
+  overflow: visible;
+}
+
+.directionCursorDouble path {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .artworkCanvas { cursor: none; }
+}
+
+@media (max-width: 768px) {
+  .sanctuaryContainer { min-height: 480px; }
+  .topGradient { height: 110px; }
+  .bottomGradient { height: 170px; }
+}

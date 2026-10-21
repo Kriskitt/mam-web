@@ -1,0 +1,106 @@
+/* ==============================================================================
+   MAM TRUX — Sistema Tipográfico v2 (Fallback Editorial de Alta Gama)
+   Figma File: wFrnaKfyEl6fDL6yIFEuiB
+   ============================================================================== */
+
+@font-face {
+  font-family: 'Anko';
+  src: url('/fonts/mam/Anko-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Anko';
+  src: url('/fonts/mam/Anko-Medium.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Anko';
+  src: url('/fonts/mam/Anko-SemiBold.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Anko';
+  src: url('/fonts/mam/Anko-Bold.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Monument Grotesk';
+  src: url('/fonts/mam/MonumentGrotesk-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Monument Grotesk';
+  src: url('/fonts/mam/MonumentGrotesk-Medium.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Monument Grotesk';
+  src: url('/fonts/mam/MonumentGrotesk-Bold.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+:root {
+  /* 
+   * Fallback de Alta Gama para Anko Trial / Anko Personal Use:
+   * Utilizado en citas célebres del maestro Gerardo Chávez y títulos destacados.
+   */
+  --mam2-font-editorial-quote: 'Anko', serif;
+  --mam2-font-editorial-heading: 'Anko', Georgia, serif;
+  --mam2-font-editorial-serif: 'Anko', Georgia, serif;
+  
+  /* 
+   * Fallback funcional para Monument Grotesk:
+   * Utilizado en navegación, botones, badges y microcopy en mayúsculas con espaciado.
+   */
+  --mam2-font-functional-sans: 'Monument Grotesk', sans-serif;
+}
+
+/* Clases utilitarias tipográficas v2 */
+.mam2-quote {
+  font-family: var(--mam2-font-editorial-quote);
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+
+.mam2-heading {
+  font-family: var(--mam2-font-editorial-heading);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.mam2-label-caps {
+  font-family: var(--mam2-font-functional-sans);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.75rem;
+}
+
+.mam2-body {
+  font-family: var(--mam2-font-functional-sans);
+  font-weight: 400;
+  line-height: 1.6;
+}

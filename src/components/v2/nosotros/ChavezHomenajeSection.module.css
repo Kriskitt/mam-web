@@ -1,0 +1,109 @@
+/* ==============================================================================
+   MAM TRUX — ChavezHomenajeSection Scoped Modular Styles
+   Figma Node: #4248:282 (Nosotros - 1920x2140px, fondo #F9F6F3)
+   - Galería tríptico continua (#4248:324)
+   - Cita célebre (#4262:720) y autoría (#4262:722)
+   - Bloque Fundación (#4271:806)
+   ============================================================================== */
+
+.section {
+  width: 100%;
+  background-color: var(--mam2-bg-light, #F9F6F3);
+  color: var(--mam2-bg-dark, #452B10);
+  padding: 30px 0 100px 0;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* 2. Contenedor Central para Textos (x: 20px, w: 1880px en 1920px) */
+.contentContainer {
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Cita Célebre (#4262:720: y: 853px -> gap ~23px desde 830px) */
+.quoteText {
+  margin: clamp(30px, 3.5vw, 48px) 0 0 0;
+  padding: 0;
+  font-family: var(--mam2-font-editorial-serif, 'Anko Personal Use', 'Cormorant Garamond', serif);
+  font-size: clamp(26px, 2.5vw, 45px);
+  line-height: clamp(32px, 2.8vw, 50px);
+  font-weight: 500;
+  color: var(--mam2-bg-dark, #452B10);
+  text-align: left;
+}
+
+/* Autoría (#4262:722: y: 1040px -> gap ~23px desde 1017px) */
+.authorText {
+  margin: clamp(16px, 1.8vw, 24px) 0 0 0;
+  padding: 0;
+  font-family: var(--mam2-font-editorial-serif, 'Anko Trial', 'Cormorant Garamond', serif);
+  font-size: clamp(26px, 2.5vw, 45px);
+  line-height: clamp(32px, 2.8vw, 50px);
+  font-weight: 400;
+  color: var(--mam2-bg-dark, #452B10);
+  text-align: left;
+}
+
+/* 3. Bloque Fundación (#4271:806: y: 1121.03px -> gap ~51px desde 1070px) */
+.fundacionBlock {
+  margin-top: clamp(40px, 4.5vw, 72px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.fundacionLogoWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: clamp(32px, 3.5vw, 49px);
+}
+
+.fundacionLogoImg {
+  width: 278.8px;
+  height: 191px;
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.fundacionText {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.fundacionParagraph {
+  margin: 0;
+  padding: 0;
+  font-family: var(--mam2-font-functional-sans, 'Monument Grotesk', sans-serif);
+  font-size: clamp(16px, 1.45vw, 26px);
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--mam2-bg-dark, #452B10);
+  text-align: left;
+}
+
+/* Responsividad para pantallas menores a 1024px */
+@media (max-width: 1024px) {
+  .section {
+    padding: 16px 0 60px 0;
+  }
+
+  .contentContainer {
+    padding: 0 20px;
+  }
+
+  .fundacionLogoImg {
+    width: 200px;
+    height: auto;
+  }
+}

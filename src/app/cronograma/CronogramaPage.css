@@ -1,0 +1,286 @@
+/* =========================================================================
+   Cronograma Page Stylesheet - MAM
+   Scoped strictly under .cronograma-page-* (Rule 4.1 Zero-Collision Policy)
+   Grounded 1:1 on Figma Frame "Cronograma" #228:885 (1440 x 1543 px)
+   ========================================================================= */
+
+.cronograma-page-shell {
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--color-bg, #F9F6F3);
+  display: flex;
+  flex-direction: column;
+  color: var(--color-earth, #452B10);
+  font-family: 'Monument Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.cronograma-page-main {
+  flex: 1;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 188px 33px 120px 33px;
+  box-sizing: border-box;
+}
+
+/* 1. Top Navigation / Back Link */
+.cronograma-page-top-nav {
+  margin-bottom: 24px;
+}
+
+.cronograma-page-back-link {
+  font-family: 'New Spirit', serif;
+  font-weight: 500;
+  font-size: 13.9px;
+  color: var(--color-earth, #452B10);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  display: inline-block;
+}
+
+.cronograma-page-back-link:hover {
+  opacity: 0.7;
+  transform: translateX(-3px);
+}
+
+/* 2. Main Title (#228:888) */
+.cronograma-page-title {
+  font-family: 'New Spirit', serif;
+  font-weight: 500;
+  font-size: 22.9px;
+  line-height: 1.2;
+  text-align: center;
+  color: var(--color-earth, #452B10);
+  margin: 0 auto 36px auto;
+  letter-spacing: 0.02em;
+}
+
+/* 3. Date Selector Pill Button (#230:1031) */
+.cronograma-page-date-selector-wrapper {
+  position: relative;
+  max-width: 501px;
+  margin: 0 auto 64px auto;
+}
+
+.cronograma-page-date-btn {
+  width: 100%;
+  height: 44px;
+  background-color: rgba(69, 43, 16, 0.03);
+  border: 1px solid rgba(69, 43, 16, 0.3);
+  border-radius: 3.3px;
+  font-family: 'Monument Grotesk', sans-serif;
+  font-weight: 400;
+  font-size: 13.9px;
+  color: var(--color-earth, #452B10);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  padding: 0 20px;
+}
+
+.cronograma-page-date-btn:hover {
+  background-color: rgba(69, 43, 16, 0.07);
+  border-color: rgba(69, 43, 16, 0.5);
+}
+
+.cronograma-page-dropdown-arrow {
+  font-size: 11px;
+  color: var(--color-earth, #452B10);
+  transition: transform 0.2s ease;
+}
+
+.cronograma-page-days-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  width: 100%;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(69, 43, 16, 0.15);
+  border-radius: 4px;
+  box-shadow: 0 8px 24px rgba(69, 43, 16, 0.08);
+  z-index: 20;
+  overflow: hidden;
+}
+
+.cronograma-page-dropdown-item {
+  width: 100%;
+  padding: 12px 18px;
+  text-align: center;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(69, 43, 16, 0.06);
+  font-family: 'Monument Grotesk', sans-serif;
+  font-size: 13.9px;
+  color: var(--color-earth, #452B10);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.cronograma-page-dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.cronograma-page-dropdown-item:hover {
+  background-color: rgba(69, 43, 16, 0.04);
+}
+
+.cronograma-page-dropdown-item.active {
+  background-color: rgba(226, 187, 120, 0.15);
+  font-weight: 600;
+  color: var(--color-earth, #452B10);
+}
+
+/* 4. Main Day Section (#230:955) */
+.cronograma-page-day-section {
+  max-width: 1188px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* Left Column: Date Label (#230:965) */
+.cronograma-page-day-label-col {
+  padding-top: 4px;
+}
+
+.cronograma-page-day-heading {
+  font-family: 'New Spirit', serif;
+  font-weight: 500;
+  font-size: 22.9px;
+  line-height: 1.25;
+  color: var(--color-earth, #452B10);
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+/* Right Column: Events List */
+.cronograma-page-events-list {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+/* Individual Event Item (#230:962, #230:959, #230:956) */
+.cronograma-page-event-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 32px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(69, 43, 16, 0.12);
+  transition: transform 0.2s ease;
+}
+
+.cronograma-page-event-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.cronograma-page-event-info {
+  flex: 1;
+}
+
+.cronograma-page-event-tag {
+  font-family: 'Monument Grotesk', sans-serif;
+  font-weight: 400;
+  font-size: 13.9px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-earth, #452B10);
+  display: block;
+  margin-bottom: 12px;
+}
+
+.cronograma-page-event-title {
+  font-family: 'Monument Grotesk', sans-serif;
+  font-weight: 500;
+  font-size: 22.9px;
+  line-height: 1.35;
+  color: var(--color-earth, #452B10);
+  margin: 0;
+}
+
+.cronograma-page-event-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.cronograma-page-event-link:hover {
+  color: #B57F32;
+}
+
+/* Thumbnail Figure (#230:972, #230:973, #230:979) */
+.cronograma-page-thumbnail-link {
+  display: block;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.cronograma-page-thumbnail-figure {
+  margin: 0;
+  width: 168px;
+  height: 108px;
+  border-radius: 9.6px;
+  overflow: hidden;
+  background-color: rgba(69, 43, 16, 0.05);
+  box-shadow: 0 4px 12px rgba(69, 43, 16, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cronograma-page-thumbnail-figure:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 18px rgba(69, 43, 16, 0.12);
+}
+
+.cronograma-page-thumbnail-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* =========================================================================
+   Responsive Adaptations
+   ========================================================================= */
+
+@media (max-width: 1080px) {
+  .cronograma-page-main {
+    padding: 150px 24px 80px 24px;
+  }
+  .cronograma-page-day-section {
+    grid-template-columns: 180px 1fr;
+    gap: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cronograma-page-main {
+    padding: 120px 20px 60px 20px;
+  }
+  .cronograma-page-date-selector-wrapper {
+    max-width: 100%;
+    margin-bottom: 40px;
+  }
+  .cronograma-page-day-section {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .cronograma-page-event-item {
+    flex-direction: column-reverse;
+    gap: 16px;
+  }
+  .cronograma-page-thumbnail-figure {
+    width: 100%;
+    height: 180px;
+  }
+  .cronograma-page-event-title {
+    font-size: 19px;
+  }
+}

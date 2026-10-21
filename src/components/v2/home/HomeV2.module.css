@@ -1,0 +1,14 @@
+/* ==============================================================================
+   MAM TRUX — HomeV2 Canvas Styles
+   Figma Node: #4022:66 (Home - 1920x5897 - Fondo #EAE9E0)
+   ============================================================================== */
+
+.homeCanvas {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--mam2-bg-home, #EAE9E0);
+  color: var(--mam2-text-earth, #452B10);
+  font-family: var(--mam2-font-functional-sans, sans-serif);
+  position: relative;
+  overflow-x: hidden;
+}

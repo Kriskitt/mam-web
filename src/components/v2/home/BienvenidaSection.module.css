@@ -1,0 +1,37 @@
+/* ==============================================================================
+   MAM TRUX — BienvenidaSection Modular Styles
+   Fiel 1:1 al Nodo de Figma #4022:188 (1887x295px, Anko Trial 45px / 50px)
+   ============================================================================== */
+
+.section {
+  width: 100%;
+  background-color: var(--mam2-bg-home, #EAE9E0);
+  color: var(--mam2-text-earth, #452B10);
+  padding: 30px 0px 100px 0px;
+}
+
+.inner {
+  width: calc(100% - (2 * var(--mam2-gutter, 2%)));
+  max-width: none;
+  margin: 0 auto;
+}
+
+.statementText {
+  font-family: 'Anko', var(--mam2-font-editorial-serif, serif);
+  font-size: clamp(1.75rem, 2.35vw, 2.8125rem); /* 28px en mobile a 45px en 1920px */
+  line-height: clamp(2.25rem, 2.7vw, 3.125rem);  /* 36px en mobile a 50px en 1920px */
+  font-weight: 400;
+  text-align: left;
+  letter-spacing: -0.01em;
+  color: var(--mam2-text-earth, #452B10);
+  margin: 0;
+}
+
+/* Responsividad */
+@media (max-width: 1024px) {
+  .section { padding: 30px 0px 100px 0px; }
+}
+
+@media (max-width: 768px) {
+  .section { padding: 30px 0px 100px 0px; }
+}

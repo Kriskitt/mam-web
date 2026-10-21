@@ -1,0 +1,474 @@
+/* ==============================================================================
+   MAM TRUX — EditorialSplitLayout Modular Styles
+   Figma Nodes: #4248:423 & #4259:550 (Educación - Split 50/50 Dual Scroll)
+   - Izquierda: Columna sticky con scroller vertical independiente de imágenes (overscroll-behavior: contain).
+   - Derecha: Contenido narrativo que desplaza con el flujo de la página hasta el footer.
+   - Cuando el cursor está sobre las imágenes, el scroll desplaza las imágenes.
+   - Cuando el cursor está sobre el texto, el scroll desplaza el texto y revela el footer.
+   - Puntitos indicadores dentro de la imagen al lado derecho sincronizados.
+   - Cero líneas divisorias y cero texto superpuesto a las imágenes.
+   ============================================================================== */
+
+.splitSection {
+  width: 100%;
+  min-height: calc(100vh - var(--mam2-header-height, 30px));
+  background-color: var(--mam2-bg-light, #F9F6F3);
+  color: var(--mam2-bg-dark, #452B10);
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+.splitContainer {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  align-items: start;
+}
+
+/* ==============================================================================
+   Panel Izquierdo: Sticky con scroller vertical independiente
+   ============================================================================== */
+.stickyMediaCol {
+  position: sticky;
+  top: var(--mam2-header-height, 30px);
+  height: calc(100vh - var(--mam2-header-height, 30px));
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  background-color: #E6E1D8;
+}
+
+/* Contenedor scroller de imágenes: consume eventos de scroll cuando el cursor está aquí */
+.mediaScroller {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scroll-snap-type: y mandatory;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+.mediaScroller::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+.mediaItemWrap {
+  width: 100%;
+  height: calc(100vh - var(--mam2-header-height, 30px));
+  min-height: calc(100vh - var(--mam2-header-height, 30px));
+  margin: 0;
+  padding: 0;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.mediaImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Botoncitos Indicadores: Flotantes fijos en el lado derecho de la imagen */
+.mediaNavButtons {
+  position: absolute;
+  top: 50%;
+  right: clamp(16px, 1.5vw, 24px);
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  z-index: 20;
+  background: transparent;
+  border: none;
+  padding: 0;
+  pointer-events: auto;
+}
+
+.carouselDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.45);
+  border: none;
+  padding: 0;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.2s ease-out, transform 0.2s ease-out;
+}
+
+/* Área de click accesible para botoncitos pequeños */
+.carouselDot::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
+}
+
+.carouselDot:hover {
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+.carouselDotActive {
+  background-color: #FFFFFF;
+  transform: scale(1.35);
+}
+
+.carouselDot:focus-visible {
+  outline: 2px solid #FFFFFF;
+  outline-offset: 3px;
+}
+
+/* ==============================================================================
+   Panel Derecho: Contenedor narrativo
+   ============================================================================== */
+.narrativeCol {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(56px, 6vw, 96px);
+  padding: clamp(60px, 5.5vw, 100px) clamp(40px, 4vw, 80px);
+  box-sizing: border-box;
+}
+
+/* Fila de Sección: 2 Columnas Estrictas (Col 1: Título/Subtítulo/Fecha | Col 2: Descripción) */
+.narrativeRow {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: clamp(36px, 4vw, 64px);
+  align-items: start;
+}
+
+/* Columna 1: EL TÍTULO, SUBTÍTULO Y FECHA (Centrados fiel a prueba_educacion.jpg) */
+.titleColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 22px;
+}
+
+.sectionTitle {
+  font-family: var(--mam2-font-editorial-serif, 'Anko Trial', 'Cormorant Garamond', 'Playfair Display', serif);
+  font-size: clamp(20px, 1.6vw, 25px);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: var(--mam2-bg-dark, #452B10);
+  margin: 0;
+  text-align: center;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+}
+
+.sectionTitleInteractive {
+  cursor: pointer;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.sectionTitleInteractive:hover {
+  opacity: 0.8;
+}
+
+.sectionTitleInteractive:focus-visible {
+  outline: 2px solid var(--mam2-bg-dark, #452B10);
+  outline-offset: 4px;
+}
+
+.sectionSubtitle {
+  font-family: var(--mam2-font-editorial-serif, 'Anko Trial', 'Cormorant Garamond', serif);
+  font-size: clamp(16px, 1.25vw, 19px);
+  font-weight: 400;
+  line-height: 1.35;
+  color: var(--mam2-bg-dark, #452B10);
+  margin: 0;
+  text-align: center;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.sectionDate {
+  font-family: var(--mam2-font-functional-sans, 'Monument Grotesk', sans-serif);
+  font-size: 13.5px;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  color: var(--mam2-bg-dark, #452B10);
+  text-align: center;
+  text-transform: none;
+  margin: 0;
+}
+
+/* Columna 2: DESCRIPCIÓN (El texto) */
+.textColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.statementLead {
+  font-family: var(--mam2-font-functional-sans, 'Monument Grotesk', sans-serif);
+  font-size: 14.5px;
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--mam2-bg-dark, #452B10);
+  margin: 0;
+  text-align: left;
+}
+
+.chaptersFlow {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(24px, 2.5vw, 32px);
+}
+
+.chapterBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  cursor: default;
+  transition: opacity 0.25s ease;
+  padding: 14px 0;
+  border-top: 1px solid rgba(69, 43, 16, 0.1);
+}
+
+.chapterBlock:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.chapterBlockActive {
+  opacity: 1;
+}
+
+.chapterBlockTitle {
+  font-family: var(--mam2-font-functional-sans, sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--mam2-bg-dark, #452B10);
+  margin: 0;
+}
+
+.chapterBlockText {
+  font-family: var(--mam2-font-functional-sans, sans-serif);
+  font-size: clamp(14px, 1vw, 16px);
+  font-weight: 400;
+  line-height: 1.8;
+  color: #4A3520;
+  margin: 0;
+}
+
+.paragraphsFlow {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.paragraphText {
+  font-family: var(--mam2-font-functional-sans, sans-serif);
+  font-size: clamp(14px, 1vw, 16px);
+  font-weight: 400;
+  line-height: 1.8;
+  color: #4A3520;
+  margin: 0;
+}
+
+/* ==============================================================================
+   Cuadro de Contacto para Instituciones Educativas (educacion_mam_interesados.png)
+   ============================================================================== */
+.contactSection {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(24px, 3vw, 48px);
+  padding-top: clamp(24px, 3vw, 40px);
+}
+
+.contactContainer {
+  width: 100%;
+  max-width: 490px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.contactTitle {
+  font-family: var(--mam2-font-editorial-serif, 'Anko Trial', 'Cormorant Garamond', 'Playfair Display', serif);
+  font-size: clamp(20px, 1.6vw, 24px);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: var(--mam2-bg-dark, #452B10);
+  margin: 0;
+  text-align: left;
+}
+
+.contactForm {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.formField {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.formLabel {
+  font-family: var(--mam2-font-functional-sans, 'Monument Grotesk', sans-serif);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--mam2-bg-dark, #452B10);
+  cursor: pointer;
+}
+
+.formUnderlineInput {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--mam2-bg-dark, #452B10);
+  border-radius: 0;
+  padding: 4px 0 6px 0;
+  font-family: var(--mam2-font-functional-sans, 'Monument Grotesk', sans-serif);
+  font-size: 14.5px;
+  color: var(--mam2-bg-dark, #452B10);
+  outline: none;
+  box-sizing: border-box;
+  transition: border-bottom-color 0.2s ease, border-bottom-width 0.2s ease;
+}
+
+.formUnderlineInput:focus {
+  border-bottom-width: 1.5px;
+  border-bottom-color: #2A180E;
+}
+
+.formSubmitButton {
+  width: 100%;
+  background-color: #3D2415;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 0;
+  padding: 13px 24px;
+  font-family: var(--mam2-font-functional-sans, 'Monument Grotesk', sans-serif);
+  font-size: 13.5px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-align: center;
+  cursor: pointer;
+  margin-top: 6px;
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+}
+
+.formSubmitButton:hover:not(:disabled) {
+  background-color: #2A180E;
+  opacity: 0.95;
+}
+
+.formSubmitButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.formSubmitButton:focus-visible {
+  outline: 2px solid var(--mam2-bg-dark, #452B10);
+  outline-offset: 3px;
+}
+
+.formFeedbackSuccess {
+  font-family: var(--mam2-font-functional-sans, 'Monument Grotesk', sans-serif);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--mam2-bg-dark, #452B10);
+  margin: 0;
+  padding: 4px 0;
+}
+
+/* ==============================================================================
+   Responsividad (< 1024px)
+   ============================================================================== */
+@media (max-width: 1024px) {
+  .splitSection {
+    min-height: 100vh;
+  }
+
+  .splitContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .stickyMediaCol {
+    position: static;
+    height: clamp(380px, 50vw, 560px);
+    overflow: hidden;
+  }
+
+  .mediaScroller {
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+  }
+
+  .mediaItemWrap {
+    width: 100%;
+    height: 100%;
+    min-height: unset;
+    scroll-snap-align: start;
+  }
+
+  .mediaNavButtons {
+    top: auto;
+    bottom: 20px;
+    right: 50%;
+    transform: translateX(50%);
+    flex-direction: row;
+  }
+
+  .narrativeCol {
+    gap: 48px;
+    padding: clamp(36px, 5vw, 60px) clamp(24px, 4vw, 40px);
+  }
+
+  .narrativeRow {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .titleColumn {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .stickyMediaCol {
+    height: 44vh;
+    min-height: 280px;
+  }
+
+  .narrativeCol {
+    padding: 32px 20px;
+  }
+}

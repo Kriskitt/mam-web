@@ -1,0 +1,262 @@
+/* ==============================================================================
+   MAM TRUX — HeaderV2 Modular Styles
+   Fiel 1:1 a los Nodos de Figma #4153:112, #4243:109 y #4248:243 (1920x30px)
+   ============================================================================== */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 36px;
+  z-index: 1000;
+  background-color: var(--mam2-bg-dark, #452B10);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--mam2-border-hairline-dark, rgba(249, 246, 243, 0.12));
+  color: var(--mam2-text-light, #F9F6F3);
+  padding: 0 var(--mam2-gutter, 20px);
+  display: flex;
+  align-items: center;
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+  font-family: 'Monument Grotesk', var(--mam2-font-functional-sans, sans-serif);
+}
+
+/* Modo Curatorial Oscuro (sincronizado 1:1 con Footer #452B10 para todas las secciones) */
+.headerDark {
+  background-color: var(--mam2-bg-dark, #452B10);
+  border-bottom-color: var(--mam2-border-hairline-dark, rgba(249, 246, 243, 0.14));
+  color: var(--mam2-text-light, #F9F6F3);
+}
+
+/* Modo Transparente Inmersivo (Pabellón Precolombino) */
+.headerTransparent {
+  background-color: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-bottom: 1px solid transparent !important;
+  box-shadow: none !important;
+}
+
+/* Estado Activo al Hacer Scroll */
+.scrolled {
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
+}
+
+.inner {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+
+/* COLUMNA IZQUIERDA: Navegación Principal (#4153:101, gap: ~27px) */
+.navCol {
+  justify-self: start;
+  display: flex;
+  align-items: center;
+  gap: 27px;
+}
+
+.navLink {
+  font-family: 'Monument Grotesk', var(--mam2-font-functional-sans, sans-serif);
+  font-size: 13px;
+  font-weight: 500;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  line-height: 22px;
+  vertical-align: middle;
+  text-decoration: none;
+  color: inherit;
+  padding: 2px 0;
+  transition: opacity 0.2s ease, border-color 0.2s ease;
+  border-bottom: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.navLink:hover {
+  opacity: 0.7;
+}
+
+/* Indicador de Página Activa (#4248:251 - 1px solid stroke) */
+.activeLink {
+  border-bottom: 1px solid currentColor;
+  opacity: 1;
+}
+
+/* COLUMNA CENTRAL: Marca Oficial MAM (#4153:107, x: 790px, w: 339.45px) */
+.brandCenter {
+  justify-self: center;
+  display: flex;
+  align-items: center;
+}
+
+.brandLink {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.brandLogoSvg {
+  height: 36px;
+  width: auto;
+  display: block;
+}
+
+.museumTitle {
+  font-family: 'Monument Grotesk', var(--mam2-font-functional-sans, sans-serif);
+  font-size: 13px;
+  font-weight: 500;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  line-height: 22px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+/* COLUMNA DERECHA: Horario Unificado (#4153:100, x: 1670px, w: 235px) */
+.scheduleCol {
+  justify-self: end;
+  font-family: 'Monument Grotesk', var(--mam2-font-functional-sans, sans-serif);
+  font-size: 13px;
+  font-weight: 500;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  line-height: 22px;
+  vertical-align: middle;
+  opacity: 0.9;
+  white-space: nowrap;
+}
+
+/* Botón Móvil */
+.mobileMenuToggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  color: inherit;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hamburgerLine {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background-color: currentColor;
+  border-radius: 1px;
+}
+
+/* Drawer Móvil Desplegable */
+.mobileMenu {
+  display: none;
+}
+
+/* ==============================================================================
+   RESPONSIVIDAD (Sally UX Guidance)
+   ============================================================================== */
+/*@media (max-width: 1180px) {
+  .navCol {
+    gap: 16px;
+  }
+
+  .navLink,
+  .museumTitle,
+  .scheduleCol {
+    font-size: 10px;
+  }
+}*/
+
+@media (max-width: 1200px) {
+  .header {
+    height: 38px;
+  }
+
+  .navCol {
+    display: none;
+  }
+
+  .scheduleCol {
+    display: none;
+  }
+
+  .inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .brandCenter {
+    justify-self: start;
+  }
+
+  .mobileMenuToggle {
+    display: flex;
+  }
+
+  .mobileMenu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    top: 38px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 38px);
+    background-color: var(--mam2-bg-dark, #452B10);
+    color: var(--mam2-text-light, #F9F6F3);
+    padding: 32px 24px;
+    z-index: 999;
+  }
+
+  .headerDark .mobileMenu {
+    background-color: var(--mam2-bg-dark, #452B10);
+    color: var(--mam2-text-light, #F9F6F3);
+  }
+
+  .mobileNavLinks {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .mobileNavLink {
+    font-family: 'Monument Grotesk', var(--mam2-font-functional-sans, sans-serif);
+    font-size: 16px;
+    font-weight: 400;
+    font-style: normal;
+    text-transform: uppercase;
+    letter-spacing: 0;
+    line-height: 22px;
+    text-decoration: none;
+    color: inherit;
+    border-bottom: 1px solid rgba(249, 246, 243, 0.12);
+    padding-bottom: 12px;
+  }
+
+  .headerDark .mobileNavLink {
+    border-bottom-color: rgba(249, 246, 243, 0.12);
+  }
+
+  .mobileSchedule {
+    font-family: 'Monument Grotesk', var(--mam2-font-functional-sans, sans-serif);
+    font-size: 16px;
+    font-weight: 400;
+    font-style: normal;
+    text-transform: uppercase;
+    letter-spacing: 0;
+    line-height: 22px;
+    opacity: 0.8;
+  }
+}

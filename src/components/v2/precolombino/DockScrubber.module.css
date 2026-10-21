@@ -1,0 +1,75 @@
+.dockContainer {
+  position: absolute;
+  right: 0;
+  bottom: 24px;
+  left: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 70px;
+  padding-inline: 1.5%;
+  box-sizing: border-box;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overscroll-behavior: contain;
+  touch-action: pan-x;
+}
+
+.dockContainer::-webkit-scrollbar { display: none; }
+
+.dockTrack {
+  display: flex;
+  flex: 0 0 max-content;
+  align-items: center;
+  gap: 8px;
+  min-width: max-content;
+}
+
+.thumbBtn {
+  position: relative;
+  flex: 0 0 clamp(72px, 6vw, 116px);
+  width: clamp(72px, 6vw, 116px);
+  aspect-ratio: 1.45 / 1;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid rgba(249, 246, 243, 0.35);
+  border-radius: 2px;
+  background: rgba(38, 23, 8, 0.5);
+  opacity: 0.64;
+  cursor: pointer;
+  transition: opacity 0.22s ease, border-color 0.22s ease, transform 0.22s ease;
+}
+
+.thumbBtn:hover,
+.thumbBtn:focus-visible {
+  opacity: 0.95;
+  border-color: rgba(249, 246, 243, 0.9);
+  outline: none;
+}
+
+.thumbBtnSelected {
+  opacity: 1;
+  border: 2px solid var(--mam2-gold, #E2BB78);
+  box-shadow: 0 4px 16px rgba(226, 187, 120, 0.36);
+  transform: translateY(-3px);
+}
+
+.thumbImg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .dockContainer { bottom: 12px; min-height: 58px; }
+  .thumbBtn { flex-basis: 76px; width: 76px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .thumbBtn { transition: none; }
+}

@@ -1,0 +1,231 @@
+/* ==============================================================================
+   MAM TRUX — AmigosMAMModal Modular Styles
+   Figma Node: #4271:1089 (PopUp - Amigos_MAM - 1920x1080)
+   Color Azul Eléctrico (#0544FF) de alta gama con figura oficial de Figma
+   ============================================================================== */
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--mam2-gutter, 20px);
+  animation: fadeIn 0.25s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modalCard {
+  position: relative;
+  width: min(580px, 92vw);
+  height: auto;
+  min-height: 520px;
+  max-width: 580px;
+  background-color: var(--mam2-accent-blue, #0544FF);
+  color: #FFFFFF;
+  border-radius: 20px;
+  padding: clamp(36px, 5vw, 48px) clamp(24px, 4vw, 44px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 24px 64px rgba(5, 68, 255, 0.45), 0 12px 28px rgba(0, 0, 0, 0.3);
+  animation: scaleUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+@keyframes scaleUp {
+  from { transform: scale(0.92) translateY(16px); opacity: 0; }
+  to { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.closeButton {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+
+.closeButton:hover {
+  background-color: #FFFFFF;
+  color: var(--mam2-accent-blue, #0544FF);
+  border-color: #FFFFFF;
+}
+
+.closeButton svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  stroke-width: 2.4;
+}
+
+/* Figura Oficial Amigos MAM (#4271:1099, 239x140px) */
+
+.figureWrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.amigosHeroFigure {
+  width: clamp(200px, 36vw, 240px);
+  height: auto;
+  max-height: 140px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.2));
+  transition: transform 0.25s ease;
+}
+
+.amigosHeroFigure:hover {
+  transform: scale(1.02);
+}
+
+.modalDescription {
+  font-family: var(--mam2-font-functional-sans, 'Monument Grotesk', sans-serif);
+  font-size: 13.5px;
+  line-height: 1.65;
+  opacity: 0.92;
+  margin: 0 0 24px;
+  max-width: 460px;
+}
+
+/* Enlace WhatsApp Directo (#4271:1115) */
+
+.whatsappBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #FFFFFF;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  letter-spacing: 0.12em;
+  font-family: var(--mam2-font-functional-sans, 'Monument Grotesk', sans-serif);
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px 16px;
+  transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+}
+
+.whatsappBtn:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+/* Divisor (#4271:1131) */
+
+.dividerRow {
+  width: 100%;
+  max-width: 459px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 20px 0 16px;
+}
+
+.dividerLine {
+  flex: 1;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.35);
+}
+
+.dividerText {
+  font-family: var(--mam2-font-functional-sans, 'Monument Grotesk', sans-serif);
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  opacity: 0.9;
+}
+
+/* Formulario (#4271:1130) */
+
+.form {
+  width: 100%;
+  max-width: 459px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.formInput {
+  width: 100%;
+  padding: 13px 18px;
+  background-color: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 4px;
+  color: #FFFFFF;
+  font-family: var(--mam2-font-functional-sans, 'Monument Grotesk', sans-serif);
+  font-size: 13.5px;
+  outline: none;
+  transition: all 0.2s ease-out;
+}
+
+.formInput::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.formInput:focus {
+  background-color: rgba(255, 255, 255, 0.22);
+  border-color: #FFFFFF;
+}
+
+.submitBtn {
+  width: 100%;
+  padding: 14px 24px;
+  background-color: #FFFFFF;
+  color: var(--mam2-accent-blue, #0544FF);
+  border: 1px solid #FFFFFF;
+  border-radius: 4px;
+  font-family: var(--mam2-font-functional-sans, 'Monument Grotesk', sans-serif);
+  font-size: 12.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: all 0.2s ease-out;
+}
+
+.submitBtn:hover {
+  background-color: #F9F6F3;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.successMessage {
+  width: 100%;
+  max-width: 459px;
+  padding: 18px;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  font-family: var(--mam2-font-functional-sans, 'Monument Grotesk', sans-serif);
+  font-size: 13.5px;
+  line-height: 1.5;
+}

@@ -1,0 +1,144 @@
+.heroContainer {
+  position: relative;
+  width: 100%;
+  height: 1100px;
+  overflow: hidden;
+  background: var(--mam2-bg-home, #EAE9E0);
+  isolation: isolate;
+}
+
+.heroContainer:focus-visible {
+  outline: 2px solid var(--mam2-text-earth, #452B10);
+  outline-offset: -4px;
+}
+
+.bgImageWrapper,
+.bgImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.bgImageWrapper {
+  background: #452B10;
+}
+
+.bgImage {
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0;
+  transition: opacity 550ms ease;
+}
+
+.activeImage { opacity: 1; }
+
+.topGradient {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 24%;
+  background: linear-gradient(180deg, rgba(69, 43, 16, 0.52), rgba(69, 43, 16, 0));
+  pointer-events: none;
+}
+
+.navigationLines {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 8px;
+  width: 100%;
+  margin-top: 18px;
+  pointer-events: auto;
+}
+
+.navigationLine {
+  position: relative;
+  height: 2.2px;
+  padding: 0;
+  border: 0;
+  background: var(--mam2-bg-white);
+  opacity: 0.55;
+  cursor: pointer;
+}
+
+.navigationLineActive {
+  opacity: 1;
+}
+
+.navigationLineActive::after {
+  position: absolute;
+  inset: 0;
+  content: '';
+  transform-origin: left center;
+  background: var(--mam2-bg-white);
+  animation: heroSegmentProgress 3500ms linear forwards;
+}
+
+@keyframes heroSegmentProgress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+.navigationLine:focus-visible {
+  outline: 1px solid var(--mam2-bg-white);
+  outline-offset: 4px;
+}
+
+.overlayContent {
+  position: absolute;
+  right: 0;
+  bottom: clamp(28px, 3.1vw, 60px);
+  left: 0;
+  z-index: 3;
+  padding: 0 var(--mam2-gutter, 2%);
+  color: var(--mam2-bg-white);
+  pointer-events: none;
+}
+
+.metaRow {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.slideCounter,
+.slideTitleLink {
+  color: var(--mam2-bg-white);
+  font-family: var(--mam2-font-functional-sans, sans-serif);
+  font-size: clamp(14px, 0.84vw, 16px);
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.slideCounter { letter-spacing: 0.18em; }
+
+.slideTitleLink {
+  width: fit-content;
+  pointer-events: auto;
+  text-decoration: none;
+}
+
+.slideTitleLink:hover,
+.slideTitleLink:focus-visible { opacity: 0.7; }
+
+@media (max-width: 768px) {
+  .heroContainer {
+    height: min(1100px, 100svh);
+    min-height: 450px;
+  }
+
+  .slideTitleLink,
+  .slideCounter { font-size: 12px; }
+
+  .navigationLines { gap: 5px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bgImage { transition: none; }
+  .navigationLineActive::after {
+    animation: none;
+    transform: scaleX(1);
+  }
+}

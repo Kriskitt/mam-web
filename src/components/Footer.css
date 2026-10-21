@@ -1,0 +1,177 @@
+.figma-footer {
+  position: relative;
+  width: 100%;
+  height: 399px;
+  overflow: hidden;
+}
+
+.figma-footer-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(249, 246, 243, 0) 0%, rgba(114, 181, 247, 0.73) 26%, rgba(190, 87, 54, 1) 60%, rgba(190, 87, 54, 1) 100%);
+  pointer-events: none;
+}
+
+.figma-footer-gradient.gradient-dark {
+  background: linear-gradient(180deg, rgba(69, 43, 16, 0.4) 0%, rgba(69, 43, 16, 0.85) 50%, rgba(69, 43, 16, 1) 100%);
+}
+
+/* Figma #265:279 (EL-782e48b0): Ochre-gold gradient for Sala Monumental Footer */
+.figma-footer-gradient.gradient-monumental {
+  background: linear-gradient(180deg, rgba(249, 246, 243, 0) 0%, rgba(215, 193, 128, 0.63) 26%, rgba(150, 123, 79, 0.89) 50%, rgba(150, 123, 79, 1) 78%);
+}
+
+/* Figma #268:899 (EL-c8d58d36): Sky-blue gradient for Nosotros Footer */
+.figma-footer-gradient.gradient-nosotros {
+  background: linear-gradient(180deg, rgba(249, 246, 243, 0) 0%, rgba(114, 179, 247, 0.73) 26%, rgba(50, 128, 232, 1) 60%, rgba(50, 128, 232, 1) 100%);
+}
+
+/* Figma #408:64: Sand to terracotta gradient for Educación Footer */
+.figma-footer-gradient.gradient-educacion {
+  background: linear-gradient(180deg, rgba(249, 246, 243, 0) 0%, rgba(215, 193, 128, 0.73) 26%, rgba(190, 87, 54, 1) 60%, rgba(190, 87, 54, 1) 100%);
+}
+
+/* Figma #265:148: Sand to deep emerald gradient for Visítanos Footer */
+.figma-footer-gradient.gradient-visitanos {
+  background: linear-gradient(180deg, rgba(240, 231, 189, 0) 5%, rgba(28, 115, 96, 0.4) 33%, rgba(28, 115, 96, 1) 90%, rgba(82, 82, 80, 0.71) 100%);
+}
+
+/* Figma #268:1014 (EL-c8317a92): Sand to lavender to moss green gradient for Cronograma Footer */
+.figma-footer-gradient.gradient-cronograma {
+  background: linear-gradient(180deg, rgba(249, 246, 243, 0) 0%, rgba(155, 151, 196, 0.73) 26%, rgba(78, 156, 75, 1) 60%, rgba(78, 156, 75, 1) 100%);
+}
+
+
+.figma-footer-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  height: 100%;
+  padding: 156px 33px 30px 33px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  color: #F9F6F3;
+}
+
+/* Col 1: Brand */
+.footer-col-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  width: 260px;
+}
+
+.footer-logo-svg {
+  width: 260px;
+  height: 63px;
+  display: block;
+}
+
+.footer-social-svg {
+  width: 172px;
+  height: 20px;
+  display: block;
+  cursor: pointer;
+  opacity: 0.9;
+  transition: opacity 0.2s ease;
+}
+
+.footer-social-svg:hover {
+  opacity: 1;
+}
+
+/* Col 2: Info */
+.footer-col-info {
+  display: flex;
+  flex-direction: column;
+  width: 260px;
+}
+
+.footer-info-heading {
+  font-family: var(--font-grotesk);
+  font-weight: 700;
+  font-size: 12.3px;
+  line-height: 1.35;
+  color: #F9F6F3;
+  margin-bottom: 12px;
+  letter-spacing: 0.04em;
+}
+
+.footer-info-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-family: var(--font-grotesk);
+  font-weight: 700;
+  font-size: 12.3px;
+  line-height: 14.4px;
+  color: #F9F6F3;
+}
+
+.footer-info-details p strong {
+  font-weight: 700;
+}
+
+/* Col 3: Navbar */
+.footer-col-navbar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 120px;
+}
+
+.footer-nav-link {
+  font-family: var(--font-grotesk);
+  font-weight: 700;
+  font-size: 12.3px;
+  line-height: 22px;
+  color: #F9F6F3;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: opacity 0.2s ease;
+}
+
+.footer-nav-link:hover {
+  opacity: 0.75;
+}
+
+/* Col 4: Fundación */
+.footer-col-fundacion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 233px;
+}
+
+.fundacion-banner-text {
+  font-family: var(--font-editorial);
+  font-weight: 500;
+  font-size: 13.9px;
+  line-height: 22.9px;
+  color: #F9F6F3;
+  margin-bottom: 15px;
+}
+
+.fundacion-logo-svg {
+  width: 168px;
+  height: 115px;
+  display: block;
+}
+
+@media (max-width: 1100px) {
+  .figma-footer {
+    height: auto;
+  }
+  .figma-footer-inner {
+    flex-direction: column;
+    gap: 30px;
+    padding: 80px 24px 40px 24px;
+  }
+}

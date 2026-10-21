@@ -1,0 +1,152 @@
+/* MAM — HorizontalGallery scoped styles for the centered Sala carousel. */
+
+.galleryFrame {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  background-color: var(--mam2-bg-light, #f9f6f3);
+}
+
+.galleryContainer {
+  --gallery-card-width: 930px;
+  --gallery-card-height: 800px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  touch-action: pan-y;
+  display: flex;
+  justify-content: flex-start;
+  background-color: transparent;
+  padding: 20px 0 60px;
+  cursor: grab;
+  user-select: none;
+}
+
+.galleryContainer:focus-visible {
+  outline: 2px solid var(--mam2-bg-dark, #452b10);
+  outline-offset: -2px;
+}
+
+.galleryContainer:active,
+.isDragging {
+  cursor: grabbing;
+}
+
+.galleryContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.galleryTrack {
+  display: flex;
+  gap: 10px;
+  width: max-content;
+  min-width: max-content;
+  max-width: none;
+  height: var(--gallery-card-height);
+  padding-inline: max(0px, calc((100vw - var(--gallery-card-width)) / 2));
+  box-sizing: border-box;
+  flex: 0 0 auto;
+}
+
+.imageCard {
+  width: var(--gallery-card-width);
+  height: var(--gallery-card-height);
+  flex: 0 0 var(--gallery-card-width);
+  border-radius: 6px;
+  overflow: hidden;
+  scroll-snap-align: center;
+}
+
+.galleryImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 6px;
+  filter: none;
+  opacity: 1;
+}
+
+.navigationButton {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  color: var(--mam2-bg-dark, #452b10);
+  background: rgba(249, 246, 243, 0.86);
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.navigationButton:hover,
+.navigationButton:focus-visible {
+  color: var(--mam2-bg-light, #f9f6f3);
+  background: var(--mam2-bg-dark, #452b10);
+}
+
+.navigationButton:focus-visible {
+  outline: 2px solid var(--mam2-bg-dark, #452b10);
+  outline-offset: 3px;
+}
+
+.navigationButton svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
+}
+
+.previousButton {
+  left: clamp(12px, 1.5vw, 28px);
+}
+
+.nextButton {
+  right: clamp(12px, 1.5vw, 28px);
+}
+
+@media (max-width: 1024px) {
+  .galleryContainer {
+    --gallery-card-width: 82vw;
+    --gallery-card-height: 480px;
+  }
+
+  .galleryTrack {
+    padding-inline: max(20px, calc((100vw - var(--gallery-card-width)) / 2));
+  }
+}
+
+@media (max-width: 640px) {
+  .galleryContainer {
+    --gallery-card-width: 88vw;
+    --gallery-card-height: 360px;
+    padding: 16px 0 40px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .galleryContainer {
+    scroll-behavior: auto;
+  }
+
+  .navigationButton {
+    transition: none;
+  }
+}

@@ -1,0 +1,77 @@
+/* ==============================================================================
+   MAM TRUX — AmigosBadge Modular Styles
+   Figma Node: #4032:66 (Amigos_MAM - 119.04x86 - Figura orgánica sin caja cuadrada)
+   ============================================================================== */
+
+.badgeContainer {
+  position: fixed;
+  right: clamp(16px, 2.5vw, 36px);
+  bottom: clamp(24px, 3.5vw, 48px);
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+}
+
+.dragEnabled .badgeBtn {
+  cursor: grab;
+  touch-action: none;
+}
+
+.dragging {
+  user-select: none;
+}
+
+.dragging .badgeBtn { cursor: grabbing; }
+
+.badgeBtn {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
+  filter: drop-shadow(0 8px 24px rgba(5, 68, 255, 0.45));
+}
+
+.badgeBtn:hover {
+  transform: translateY(-4px) scale(1.06);
+  filter: drop-shadow(0 14px 32px rgba(5, 68, 255, 0.65));
+}
+
+.badgeBtn:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.badgeBtn:focus-visible {
+  outline: 2px solid var(--mam2-accent-gold, #E2BB78);
+  outline-offset: 4px;
+  border-radius: 50%;
+}
+
+.badgeImage {
+  width: clamp(105px, 9vw, 125px);
+  height: auto;
+  max-height: 95px;
+  object-fit: contain;
+  display: block;
+  user-select: none;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .badgeContainer {
+    right: 14px;
+    bottom: 20px;
+  }
+
+  .badgeImage {
+    width: 92px;
+    max-height: 70px;
+  }
+}

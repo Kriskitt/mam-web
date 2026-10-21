@@ -1,0 +1,79 @@
+@import '../styles/tokens-v2.css';
+@import '../styles/typography-v2.css';
+
+/* ==========================================================================
+   MAM — Museo de Arte Moderno de Trujillo (Fundación Gerardo Chávez)
+   1:1 Pixel-Accurate Design System from Figma Canvas (Node 1:2)
+   ========================================================================== */
+
+:root {
+  /* Color Palette directly from Figma nodes */
+  --figma-bg-sand: #F6F3E6;
+  --figma-sand-alt: #F9F6F3;
+  --figma-earth: #452B10;
+  --figma-earth-subtle: rgba(69, 43, 16, 0.7);
+  --figma-earth-muted: rgba(69, 43, 16, 0.3);
+  --figma-white: #FFFFFF;
+  --figma-cream-white: #F9F6F3;
+  --figma-gold: #E2BB78;
+  --figma-blue-glow: #0544FF;
+
+  /* Typography Stacks matching Figma exactly with high-end web fallbacks */
+  --font-editorial: 'New Spirit', 'Cinzel', 'Playfair Display', 'Georgia', serif;
+  --font-grotesk: 'Monument Grotesk', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  background-color: var(--figma-bg-sand);
+  color: var(--figma-earth);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--figma-bg-sand);
+  color: var(--figma-earth);
+  font-family: var(--font-grotesk);
+  overflow-x: hidden;
+}
+
+/* Layout wrapper allowing full-bleed hero, cronograma and footer */
+.figma-canvas-shell {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  background-color: var(--figma-bg-sand);
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+/* Screen reader utility for accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

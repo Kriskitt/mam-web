@@ -1,0 +1,76 @@
+/* ==============================================================================
+   MAM TRUX — Tokens de Diseño v2
+   Figma File: wFrnaKfyEl6fDL6yIFEuiB
+   Lienzo Oficial: MAM - Desktop (#0:1)
+   ============================================================================== */
+
+:root {
+  /* ==========================================
+     1. PALETA CROMÁTICA OFICIAL (BIMODAL)
+     ========================================== */
+  /* Fondos y Superficies */
+  --mam2-bg-home: #EAE9E0;         /* Warm Stone / Tono Piedra Cálido oficial de Home (#4022:66) */
+  --mam2-bg-light: #F9F6F3;        /* Sand / Lino claro para Visítanos y Salas */
+  --mam2-bg-dark: #452B10;         /* Tierra Oscura / Inmersivo para Exhibiciones (#4262:609) */
+  --mam2-bg-white: #FFFFFF;
+
+  /* Textos y Contraste */
+  --mam2-text-earth: #452B10;      /* Texto principal sobre superficies claras */
+  --mam2-text-light: #F9F6F3;      /* Texto principal sobre superficies oscuras */
+  --mam2-text-muted: rgba(69, 43, 16, 0.7);
+  --mam2-text-muted-dark: rgba(249, 246, 243, 0.7);
+
+  /* Acentos de Marca */
+  --mam2-accent-blue: #0544FF;     /* Azul de acción (PopUp Amigos MAM #4271:1089) */
+  --mam2-accent-gold: #E2BB78;     /* Oro colonial y detalles curatoriales */
+  --mam2-accent-gold-hover: #D4A556;
+
+  /* Bordes y Divisores */
+  --mam2-border-subtle: rgba(69, 43, 16, 0.12);
+  --mam2-border-dark: rgba(249, 246, 243, 0.15);
+  --mam2-border-solid: #452B10;
+
+  /* ==========================================
+     2. DIMENSIONES Y GRIDS OFICIALES FIGMA
+     ========================================== */
+  --mam2-canvas-width: 1920px;
+  --mam2-max-width: 1880px;        /* Límite histórico para superficies editoriales */
+  --mam2-gutter: 1.5%;               /* Padding horizontal proporcional de Home */
+  --mam2-header-height: 30px;      /* Altura compacta Header_whenscrolling (#4153:112) */
+  --mam2-footer-height: 174px;     /* Altura estándar de Footer (#4120:62) */
+
+  /* ==========================================
+     3. ELEVACIONES Y TRANSICIONES
+     ========================================== */
+  --mam2-transition-fast: 150ms ease-out;
+  --mam2-transition-normal: 250ms ease-out;
+  --mam2-transition-smooth: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  --mam2-radius-sm: 4px;
+  --mam2-radius-md: 6px;
+  --mam2-radius-full: 9999px;
+
+  /* ==========================================
+     4. TOKENS SEMÁNTICOS DE REFERENCIA
+     (Barlet Sœurs & bd85bd85)
+     ========================================== */
+  /* Enmarcado Hairline Perimetral */
+  --mam2-border-hairline: rgba(69, 43, 16, 0.14);
+  --mam2-border-hairline-dark: rgba(249, 246, 243, 0.12);
+  --mam2-border-hairline-gold: rgba(226, 187, 120, 0.35);
+
+  /* Curvas y Easing Editoriales */
+  --mam2-ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
+  --mam2-transition-theme: background-color 0.8s var(--mam2-ease-editorial), color 0.6s ease;
+  --mam2-transition-media: transform 0.6s var(--mam2-ease-editorial);
+  --mam2-transition-fade: opacity 0.5s var(--mam2-ease-editorial);
+
+  /* Dimensiones del Dock Scrubber (Precolombino) */
+  --mam2-dock-scrubber-height: 64px;
+  --mam2-dock-thumb-size: 44px;
+  --mam2-hairline-width: 1px;
+
+  /* Home UI refinement */
+  --mam2-precolombino-bg: #BE5736;
+  --mam2-location-bg: #B9DEBF;
+  --mam2-newsletter-bg: #D7C180;
+}

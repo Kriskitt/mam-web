@@ -1,0 +1,258 @@
+/* ==============================================================================
+   MAM TRUX — CuratorialExhibitionGrid Modular Styles
+   Figma Node: #4262:609 (Exhibiciones - 1920x3873)
+   Fondo Curatorial Oscuro (#452B10) — Lienzo Fluido Sin Tarjetas
+   - Esquina superior izquierda: Subtítulos AHORA y ARCHIVO (#4262:649).
+   - Cero cards: Todo integrado limpiamente sobre el lienzo.
+   - Solo: Nombre de la sala, título de la exhibición y categoría/vigencia.
+   ============================================================================== */
+
+.section {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--mam2-bg-dark, #452B10);
+  color: var(--mam2-text-light, #F9F6F3);
+  padding: clamp(70px, 6vw, 95px) 0 clamp(80px, 7vw, 120px);
+  position: relative;
+}
+
+.inner {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--mam2-gutter, 20px);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Esquina Superior Izquierda: Encabezado EXHIBICIONES y Subtítulos AHORA / ARCHIVO (#4262:649, x:20, y:104, w:196, h:84) */
+.navBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: clamp(40px, 4.5vw, 64px);
+  padding-top: 14px;
+  align-items: center;
+}
+
+.sectionTitle {
+  font-family: var(--mam2-font-functional-sans, sans-serif);
+  font-size: clamp(26px, 3.8vw, 33px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--mam2-text-light, #F9F6F3);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.subnavBlock {
+  display: inline-flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.subnavBtn {
+  background: transparent;
+  border: none;
+  padding: 4px 0;
+  font-family: var(--mam2-font-functional-sans, sans-serif);
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: rgba(249, 246, 243, 0.45);
+  cursor: pointer;
+  transition: color 0.25s ease, border-color 0.25s ease;
+  border-bottom: 2px solid transparent;
+}
+
+.subnavBtn:hover {
+  color: rgba(249, 246, 243, 0.85);
+}
+
+.subnavBtnActive {
+  color: #FFFFFF;
+  font-weight: 600;
+  border-bottom: 2px solid #FFFFFF;
+}
+
+.subnavBtn:focus-visible {
+  outline: 2px solid var(--mam2-accent-gold, #E2BB78);
+  outline-offset: 4px;
+}
+
+/* Grilla Curatorial sobre el Lienzo (#4262:610) — Sin Cards */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 2fr);
+  gap: clamp(3%, 3vw, 3%) clamp(3%, 3vw, 3%);
+  width: 100%;
+  padding: 0 0%;
+}
+
+/* Elemento del Lienzo: Cero Tarjetas */
+.canvasItem {
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+  overflow: visible;
+}
+
+.canvasItemFull {
+  grid-column: 1 / -1;
+  width: 100%;
+}
+
+.canvasItemHalf {
+  grid-column: span 1;
+  width: 100%;
+}
+
+.itemLink {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+  cursor: pointer;
+}
+
+.itemLink:focus-visible {
+  outline: 2px solid var(--mam2-accent-gold, #E2BB78);
+  outline-offset: 6px;
+}
+
+/* Enmarcado de Imagen Monumental en el Lienzo */
+.mediaFrame {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--room-frame-bg, #2E1B0A);
+  transition: background-color 0.4s ease;
+}
+
+.mediaFrameFull {
+  aspect-ratio: 21 / 9;
+  max-height: 720px;
+}
+
+@media (min-width: 1440px) {
+  .mediaFrameFull {
+    aspect-ratio: 2.2 / 1;
+  }
+}
+
+.mediaFrameHalf {
+  aspect-ratio: 4 / 5;
+}
+
+.itemImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  -webkit-mask-image: linear-gradient(rgba(0, 0, 0, 1) 100%, rgba(0, 0, 0, 1) 100%);
+  mask-image: linear-gradient(rgba(0, 0, 0, 1) 100%, rgba(0, 0, 0, 1) 100%);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              -webkit-mask-image 0.5s ease,
+              mask-image 0.5s ease,
+              filter 0.5s ease;
+}
+
+/* Efecto Difuminado en Hover (fiel 1:1 a difuminar_imagenes.png) */
+.itemLink:hover .itemImage {
+  transform: scale(1.01);
+  -webkit-mask-image: linear-gradient(rgba(0, 0, 0, 1) 32%, rgba(0, 0, 0, 0) 74%);
+  mask-image: linear-gradient( rgba(0, 0, 0, 1) 32%, rgba(0, 0, 0, 0) 74%);
+}
+
+.itemLink:hover .roomName {
+  color: var(--room-frame-bg);
+  transition: color 0.3s ease;
+}
+
+/* Bloque Descriptivo Limpio: Centrado, Editorial y Minimalista */
+.itemBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1px;
+  padding-top: clamp(8px, 1.3vw, 8px);
+  width: 100%;
+}
+
+.roomName {
+  font-family: var(--mam2-font-editorial-serif, serif);
+  font-size: clamp(18px, 1.4vw, 30px);
+  font-weight: 600;
+  line-height: clamp(1.3, 1, 1);
+  color: var(--mam2-text-light, #F9F6F3);
+  margin: 0 10px;
+  text-transform: uppercase;
+}
+
+.canvasItemFull .roomName {
+  font-size: clamp(18px, 1.4vw);
+}
+
+.exhibitionTitle {
+  font-family: var(--mam2-font-functional-sans, sans-serif);
+  font-size: clamp(11px, 0.7vw, 15px);
+  font-weight:500;
+  text-transform: uppercase;
+  color: rgba(249, 246, 243, 0.88);
+  margin: 0;
+}
+
+.categoryTag {
+  font-family: var(--mam2-font-functional-sans, sans-serif);
+  font-size: clamp(11px, 0.7vw, 15px);
+  font-weight: 500;
+  color: var(--mam2-text-light);
+}
+
+/* Responsividad */
+@media (min-width: 700px) and (max-width: 1400px) {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    gap: 2% 2%;
+    width: 100%;
+    padding: 0 0%;
+  }
+
+  .mediaFrameFull,
+  .mediaFrameHalf {
+    aspect-ratio: 4 / 5;
+    max-height: 600px;
+  }
+
+  .itemBody {
+    padding-top: 18px;
+  }
+}
+@media (max-width: 699px){
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(1, 2fr);
+    gap: 1% 1%;
+    width: 100%;
+    padding: 0 0%;
+  }
+
+  .mediaFrameFull,
+  .mediaFrameHalf {
+    aspect-ratio: 4 / 5;
+    max-height: 600px;
+  }
+
+  .itemBody {
+    padding-top: 8px;
+  }
+}
